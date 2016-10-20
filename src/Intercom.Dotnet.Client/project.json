@@ -1,0 +1,40 @@
+{
+	"version": "2.1-preview1",
+	"title": "Intercom Dotnet Client",
+	"description": "The official Intercom API client library for .NET",
+	"authors": [ "Intercom" ],
+	"packOptions": {
+		"tags": [ "" ],
+		"projectUrl": "https://github.com/HelmGlobal/intercom-dotnet",
+		"repository": {
+			"type": "git",
+			"url": "https://github.com/HelmGlobal/intercom-dotnet"
+		},
+		"summary": "The official Intercom API client library for .NET",
+		"iconUrl": "https://raw.githubusercontent.com/intercom/intercom-dotnet/master/src/assets/Intercom.png"
+	},
+
+	"dependencies": {
+		"System.Net.Http": "4.1.0",
+		"Newtonsoft.Json": "9.0.1"
+	},
+
+	"frameworks": {
+		"netstandard1.6": {
+			"dependencies": {
+				"NETStandard.Library": "1.6.0"
+			},
+			"imports": [
+				"dnxcore50",
+				"portable-net451+win8+win81+win10"
+			],
+			"buildOptions": {
+				"define": [ "NET_STANDARD" ]
+			}
+		}
+	},
+
+	"buildOptions": {
+		"debugType": "portable"
+	}
+}

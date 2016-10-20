@@ -1,0 +1,3 @@
+{
+	"projects": [ "src", "src/Intercom.Dotnet.Client", "src/Intercom.Dotnet.Example" ]
+}
