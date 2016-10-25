@@ -1,5 +1,5 @@
 {
-	"version": "2.1-preview2",
+	"version": "2.1-preview3",
 	"title": "Intercom Dotnet Client",
 	"description": "The official Intercom API client library for .NET",
 	"authors": [ "Intercom" ],

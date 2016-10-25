@@ -268,6 +268,7 @@ namespace Intercom.Core
 		{
 			var final = String.IsNullOrEmpty(resource) ? RESRC : resource;
 			HttpRequestMessage request = new HttpRequestMessage();
+			request.Method = new HttpMethod(httpMethod);
 			request.RequestUri = new Uri(URL + final);
 			request.Headers.TryAddWithoutValidation("Content-Type", CONTENT_TYPE_VALUE);
 			request.Headers.TryAddWithoutValidation("Accept-Charset", ACCEPT_CHARSET_VALUE);
