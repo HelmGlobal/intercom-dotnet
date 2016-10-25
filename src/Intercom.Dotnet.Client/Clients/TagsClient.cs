@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using Intercom.Core;
 using Intercom.Data;
 using Newtonsoft.Json;
@@ -24,11 +25,21 @@ namespace Intercom.Clients
 		{
 		}
 
+		public TagsClient(Authentication authentication, HttpClientHandler handler)
+			: base(INTERCOM_API_BASE_URL, TAGS_RESOURCE, authentication, handler)
+		{
+		}
+
 		public TagsClient(String intercomApiUrl, Authentication authentication)
 			: base(String.IsNullOrEmpty(intercomApiUrl) ? INTERCOM_API_BASE_URL : intercomApiUrl, TAGS_RESOURCE, authentication)
 		{
 		}
-			
+
+		public TagsClient(String intercomApiUrl, Authentication authentication, HttpClientHandler handler)
+			: base(String.IsNullOrEmpty(intercomApiUrl) ? INTERCOM_API_BASE_URL : intercomApiUrl, TAGS_RESOURCE, authentication, handler)
+		{
+		}
+
 		public Tag Create(Tag tag)
 		{
 			if (tag == null)

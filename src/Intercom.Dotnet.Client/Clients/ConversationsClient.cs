@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
 using Intercom.Core;
 using Intercom.Data;
 
@@ -19,15 +20,21 @@ namespace Intercom.Clients
 
 		private const String CONVERSATIONS_RESOURCE = "conversations";
 
-		public ConversationsClient( Authentication authentication)
+		public ConversationsClient(Authentication authentication)
 			: base(INTERCOM_API_BASE_URL, CONVERSATIONS_RESOURCE, authentication)
-		{
-		}
+		{ }
+
+		public ConversationsClient(Authentication authentication, HttpClientHandler handler)
+			: base(INTERCOM_API_BASE_URL, CONVERSATIONS_RESOURCE, authentication, handler)
+		{ }
 
 		public ConversationsClient(String intercomApiUrl, Authentication authentication)
 			: base(String.IsNullOrEmpty(intercomApiUrl) ? INTERCOM_API_BASE_URL : intercomApiUrl, CONVERSATIONS_RESOURCE, authentication)
-		{
-		}
+		{ }
+
+		public ConversationsClient(String intercomApiUrl, Authentication authentication, HttpClientHandler handler)
+			: base(String.IsNullOrEmpty(intercomApiUrl) ? INTERCOM_API_BASE_URL : intercomApiUrl, CONVERSATIONS_RESOURCE, authentication, handler)
+		{ }
 
 		public Conversation View(String id, bool? displayAsPlainText = null)
 		{

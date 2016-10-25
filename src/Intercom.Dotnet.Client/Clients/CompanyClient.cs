@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using Intercom.Core;
 using Intercom.Data;
 using Newtonsoft.Json;
@@ -15,13 +16,19 @@ namespace Intercom.Clients
 
 		public CompanyClient(Authentication authentication)
 			: base(INTERCOM_API_BASE_URL, COMPANIES_RESOURCE, authentication)
-		{
-		}
+		{ }
+
+		public CompanyClient(Authentication authentication, HttpClientHandler handler)
+			: base(INTERCOM_API_BASE_URL, COMPANIES_RESOURCE, authentication, handler)
+		{ }
 
 		public CompanyClient(String intercomApiUrl, Authentication authentication)
 			: base(String.IsNullOrEmpty(intercomApiUrl) ? INTERCOM_API_BASE_URL : intercomApiUrl, COMPANIES_RESOURCE, authentication)
-		{
-		}
+		{ }
+
+		public CompanyClient(String intercomApiUrl, Authentication authentication, HttpClientHandler handler)
+			: base(String.IsNullOrEmpty(intercomApiUrl) ? INTERCOM_API_BASE_URL : intercomApiUrl, COMPANIES_RESOURCE, authentication, handler)
+		{ }
 
 		public Company Create(Company company)
 		{

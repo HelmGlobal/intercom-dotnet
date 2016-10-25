@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using Intercom.Core;
 using Intercom.Data;
 using Newtonsoft.Json;
@@ -18,8 +19,18 @@ namespace Intercom.Clients
 		{
 		}
 
+		public VisitorsClient(Authentication authentication, HttpClientHandler handler)
+			: base(INTERCOM_API_BASE_URL, VISITORS_RESOURCE, authentication, handler)
+		{
+		}
+
 		public VisitorsClient(String intercomApiUrl, Authentication authentication)
 			: base(String.IsNullOrEmpty(intercomApiUrl) ? INTERCOM_API_BASE_URL : intercomApiUrl, VISITORS_RESOURCE, authentication)
+		{
+		}
+
+		public VisitorsClient(String intercomApiUrl, Authentication authentication, HttpClientHandler handler)
+			: base(String.IsNullOrEmpty(intercomApiUrl) ? INTERCOM_API_BASE_URL : intercomApiUrl, VISITORS_RESOURCE, authentication, handler)
 		{
 		}
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using Intercom.Core;
 using Intercom.Data;
 
@@ -8,17 +9,23 @@ namespace Intercom.Clients
 {
 	public class EventsClient : Client
 	{
-		private const String COMPANIES_RESOURCE = "events";
+		private const String EVENTS_RESOURCE = "events";
 
-		public EventsClient (Authentication authentication)
-			: base (INTERCOM_API_BASE_URL, COMPANIES_RESOURCE, authentication)
-		{
-		}
+		public EventsClient(Authentication authentication)
+			: base(INTERCOM_API_BASE_URL, EVENTS_RESOURCE, authentication)
+		{ }
+
+		public EventsClient(Authentication authentication, HttpClientHandler handler)
+			: base(INTERCOM_API_BASE_URL, EVENTS_RESOURCE, authentication, handler)
+		{ }
 
 		public EventsClient(String intercomApiUrl, Authentication authentication)
-			: base(String.IsNullOrEmpty(intercomApiUrl) ? INTERCOM_API_BASE_URL : intercomApiUrl, COMPANIES_RESOURCE, authentication)
-		{
-		}
+			: base(String.IsNullOrEmpty(intercomApiUrl) ? INTERCOM_API_BASE_URL : intercomApiUrl, EVENTS_RESOURCE, authentication)
+		{ }
+
+		public EventsClient(String intercomApiUrl, Authentication authentication, HttpClientHandler handler)
+			: base(String.IsNullOrEmpty(intercomApiUrl) ? INTERCOM_API_BASE_URL : intercomApiUrl, EVENTS_RESOURCE, authentication, handler)
+		{ }
 
 		public Event Create (Event @event)
 		{

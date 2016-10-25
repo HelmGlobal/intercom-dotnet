@@ -21,8 +21,9 @@ namespace Intercom.Core
 		protected readonly String URL;
 		protected readonly String RESRC;
 		protected readonly Authentication AUTH;
+		protected readonly HttpClientHandler HANDLER;
 
-		public Client(String url, String resource, Authentication authentication)
+		public Client(String url, String resource, Authentication authentication, HttpClientHandler handler = null)
 		{
 			if (authentication == null)
 				throw new ArgumentNullException(nameof(authentication));
@@ -36,6 +37,7 @@ namespace Intercom.Core
 			this.URL = url;
 			this.RESRC = resource;
 			this.AUTH = authentication;
+			this.HANDLER = handler;
 		}
 
 		protected virtual ClientResponse<T> Get<T>(
@@ -286,7 +288,7 @@ namespace Intercom.Core
 
 		protected virtual HttpClient BuildClient()
 		{
-			var client = new HttpClient();
+			var client = HANDLER == null ? new HttpClient() : new HttpClient(HANDLER);
 
 			byte[] authData = new byte[0];
 			if (!String.IsNullOrEmpty(AUTH.AppId) && !String.IsNullOrEmpty(AUTH.AppKey))

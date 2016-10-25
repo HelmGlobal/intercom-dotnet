@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using Intercom.Core;
 using Intercom.Data;
 
@@ -13,13 +14,19 @@ namespace Intercom.Clients
 
 		public SegmentsClient(Authentication authentication)
 			: base(INTERCOM_API_BASE_URL, SEGMENTS_RESOURCE, authentication)
-		{
-		}
+		{ }
+
+		public SegmentsClient(Authentication authentication, HttpClientHandler handler)
+			: base(INTERCOM_API_BASE_URL, SEGMENTS_RESOURCE, authentication, handler)
+		{ }
 
 		public SegmentsClient(String intercomApiUrl, Authentication authentication)
 			: base(String.IsNullOrEmpty(intercomApiUrl) ? INTERCOM_API_BASE_URL : intercomApiUrl, SEGMENTS_RESOURCE, authentication)
-		{
-		}
+		{ }
+
+		public SegmentsClient(String intercomApiUrl, Authentication authentication, HttpClientHandler handler)
+			: base(String.IsNullOrEmpty(intercomApiUrl) ? INTERCOM_API_BASE_URL : intercomApiUrl, SEGMENTS_RESOURCE, authentication, handler)
+		{ }
 
 		public Segments List(bool company = false)
 		{

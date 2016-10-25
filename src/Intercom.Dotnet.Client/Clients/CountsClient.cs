@@ -1,23 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using Intercom.Core;
 using Intercom.Data;
 
 namespace Intercom.Clients
 {
-	public class CountsClient: Client
+	public class CountsClient : Client
 	{
 		private const String COUNTS_RESOURCE = "counts";
 
-		public CountsClient (Authentication authentication)
-			: base (INTERCOM_API_BASE_URL, COUNTS_RESOURCE, authentication)
-		{
-		}
+		public CountsClient(Authentication authentication)
+			: base(INTERCOM_API_BASE_URL, COUNTS_RESOURCE, authentication)
+		{ }
+
+		public CountsClient(Authentication authentication, HttpClientHandler handler)
+			: base(INTERCOM_API_BASE_URL, COUNTS_RESOURCE, authentication, handler)
+		{ }
 
 		public CountsClient(String intercomApiUrl, Authentication authentication)
 			: base(String.IsNullOrEmpty(intercomApiUrl) ? INTERCOM_API_BASE_URL : intercomApiUrl, COUNTS_RESOURCE, authentication)
-		{
-		}
+		{ }
+
+		public CountsClient(String intercomApiUrl, Authentication authentication, HttpClientHandler handler)
+			: base(String.IsNullOrEmpty(intercomApiUrl) ? INTERCOM_API_BASE_URL : intercomApiUrl, COUNTS_RESOURCE, authentication, handler)
+		{ }
 
 		public AppCount GetAppCount()
 		{

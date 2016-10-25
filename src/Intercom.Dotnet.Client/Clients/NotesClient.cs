@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
 using Intercom.Core;
 using Intercom.Data;
 using Newtonsoft.Json;
@@ -13,13 +14,19 @@ namespace Intercom.Clients
 
 		public NotesClient(Authentication authentication)
 			: base(INTERCOM_API_BASE_URL, NOTES_RESOURCE, authentication)
-		{
-		}
+		{ }
+
+		public NotesClient(Authentication authentication, HttpClientHandler handler)
+			: base(INTERCOM_API_BASE_URL, NOTES_RESOURCE, authentication, handler)
+		{ }
 
 		public NotesClient(String intercomApiUrl, Authentication authentication)
 			: base(String.IsNullOrEmpty(intercomApiUrl) ? INTERCOM_API_BASE_URL : intercomApiUrl, NOTES_RESOURCE, authentication)
-		{
-		}
+		{ }
+
+		public NotesClient(String intercomApiUrl, Authentication authentication, HttpClientHandler handler)
+			: base(String.IsNullOrEmpty(intercomApiUrl) ? INTERCOM_API_BASE_URL : intercomApiUrl, NOTES_RESOURCE, authentication, handler)
+		{ }
 
 		public Note Create(Note note)
 		{

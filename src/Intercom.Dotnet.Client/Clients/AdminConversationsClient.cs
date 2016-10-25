@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
 using Intercom.Core;
 using Intercom.Data;
 
 namespace Intercom.Clients
 {
-	public class AdminConversationsClient: Client
+	public class AdminConversationsClient : Client
 	{
 		private const String CONVERSATIONS_RESOURCE = "conversations";
 		private const String MESSAGES_RESOURCE = "messages";
@@ -14,13 +15,19 @@ namespace Intercom.Clients
 
 		public AdminConversationsClient(Authentication authentication)
 			: base(INTERCOM_API_BASE_URL, CONVERSATIONS_RESOURCE, authentication)
-		{
-		}
+		{ }
+
+		public AdminConversationsClient(Authentication authentication, HttpClientHandler handler)
+			: base(INTERCOM_API_BASE_URL, CONVERSATIONS_RESOURCE, authentication, handler)
+		{ }
 
 		public AdminConversationsClient(String intercomApiUrl, Authentication authentication)
 			: base(String.IsNullOrEmpty(intercomApiUrl) ? INTERCOM_API_BASE_URL : intercomApiUrl, CONVERSATIONS_RESOURCE, authentication)
-		{
-		}
+		{ }
+
+		public AdminConversationsClient(String intercomApiUrl, Authentication authentication, HttpClientHandler handler)
+			: base(String.IsNullOrEmpty(intercomApiUrl) ? INTERCOM_API_BASE_URL : intercomApiUrl, CONVERSATIONS_RESOURCE, authentication, handler)
+		{ }
 
 		public ConversationPart Reply(AdminConversationReply reply)
 		{
